@@ -1,0 +1,53 @@
+:root{
+  --bg:#e8efe0; --panel:#d5e0c8; --ink:#1f2a1a; --grid:#c9d6ba;
+  --snake:#2f5d34; --head:#1b3a20; --food:#c2432d;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121a12; --panel:#1b261b; --ink:#dfe9d6; --grid:#223022;
+    --snake:#7fc46f; --head:#b8f0a4; --food:#ff7a59; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121a12; --panel:#1b261b; --ink:#dfe9d6; --grid:#223022;
+  --snake:#7fc46f; --head:#b8f0a4; --food:#ff7a59; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"Trebuchet MS","Segoe UI",system-ui,sans-serif;
+  display:flex;align-items:center;justify-content:center;
+}
+main{width:min(92vw,440px);display:flex;flex-direction:column;gap:12px}
+header{display:flex;justify-content:space-between;align-items:baseline}
+h1{font-size:1.6rem;margin:0;letter-spacing:.02em}
+.scores{display:flex;gap:16px;font-size:.95rem}
+.scores b{font-size:1.2rem}
+.board{position:relative}
+canvas{
+  width:100%;aspect-ratio:1;display:block;background:var(--panel);
+  border:3px solid var(--ink);border-radius:10px;touch-action:none;
+}
+.overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:10px;text-align:center;
+  background:color-mix(in srgb,var(--bg) 82%,transparent);border-radius:10px;
+}
+.overlay[hidden]{display:none}
+.overlay h2{margin:0;font-size:1.5rem}
+.overlay p{margin:0;font-size:.95rem;max-width:30ch}
+button{
+  font:inherit;font-weight:700;padding:10px 22px;border-radius:8px;cursor:pointer;
+  border:2px solid var(--ink);background:var(--snake);color:var(--bg);
+}
+button:focus-visible{outline:3px solid var(--food);outline-offset:2px}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;width:180px;margin:0 auto}
+.pad button{padding:10px 0;background:var(--panel);color:var(--ink)}
+.pad .up{grid-column:2}.pad .left{grid-column:1;grid-row:2}
+.pad .down{grid-column:2;grid-row:2}.pad .right{grid-column:3;grid-row:2}
+@media (hover:hover) and (pointer:fine){.pad{display:none}}

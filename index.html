@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Snake</title>
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Snake</h1>
+    <div class="scores"><span>Score <b id="score">0</b></span><span>Best <b id="best">0</b></span></div>
+  </header>
+  <div class="board">
+    <canvas id="c" width="400" height="400" aria-label="Snake game board"></canvas>
+    <div class="overlay" id="overlay">
+      <h2 id="title">Ready?</h2>
+      <p id="msg">Use arrow keys or WASD. Swipe on touch screens. Space pauses.</p>
+      <button id="start">Start game</button>
+    </div>
+  </div>
+  <div class="pad" aria-label="Direction controls">
+    <button class="up" data-d="up" aria-label="Up">▲</button>
+    <button class="left" data-d="left" aria-label="Left">◀</button>
+    <button class="down" data-d="down" aria-label="Down">▼</button>
+    <button class="right" data-d="right" aria-label="Right">▶</button>
+  </div>
+</main>
+<script src="index.js"></script>
+</body>
+</html>
